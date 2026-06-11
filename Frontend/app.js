@@ -37,8 +37,7 @@ const headerSubtitle = document.getElementById('header-subtitle');
 
 if (navLogout) {
     navLogout.addEventListener('click', () => {
-        localStorage.removeItem('userEmail');
-        localStorage.removeItem('userFullName');
+        localStorage.clear();
         window.location.href = 'auth.html';
     });
 }
