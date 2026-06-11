@@ -153,11 +153,15 @@ Flow:
 """
 )
 # 3. Booking Agent
-# agents.py (Line AFTER fix)
 booking_agent = create_react_agent(
     llm, 
     tools=[book_appointment],
-    prompt="You are a Booking Agent. Your job is to book the appointment. You need a doctor's ID, a date (YYYY-MM-DD), a time (HH:MM), and the patient's email. Use 'book_appointment' tool. If you don't know the date, assume the user means the upcoming date for that day. Current year is 2026."
+    prompt="""You are a Booking Agent. Your job is to book the appointment. 
+You need a doctor's ID, a date (YYYY-MM-DD), a time (HH:MM), and the patient's email. Use 'book_appointment' tool ONLY when you have all of these.
+If you are missing the date or the time, you MUST ask the user for them (e.g. "What date and time would you prefer?").
+If you don't know the doctor's ID, ask the user to clarify.
+Do NOT call the tool if you are missing the time.
+Current year is 2026."""
 )
 # 4. End Agent
 end_prompt = ChatPromptTemplate.from_messages([
