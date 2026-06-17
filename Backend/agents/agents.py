@@ -35,6 +35,15 @@ def find_doctor(specialty: str):
     return search_doctors(specialty)
 
 @tool
+def find_doctor_by_name(name: str):
+    """Search for a doctor by their name to get their ID and details."""
+    time.sleep(1.5) # Fix for Mistral Free Tier rate limit
+    res = get_doctor_by_name(name)
+    if res:
+        return f"Found Doctor: ID {res['id']}, Name: {res['name']}, Specialty: {res['specialty']}"
+    return f"No doctor found with name {name}"
+
+@tool
 def book_appointment(doctor_id: int, date: str, time_str: str, user_email: str, predicted_disease: str = None):
     """
     Book an appointment with a doctor.
@@ -155,9 +164,10 @@ Flow:
 # 3. Booking Agent
 booking_agent = create_react_agent(
     llm, 
-    tools=[book_appointment],
+    tools=[book_appointment, find_doctor_by_name],
     prompt="""You are a Booking Agent. Your job is to book the appointment. 
 You need a doctor's ID, a date (YYYY-MM-DD), a time (HH:MM), and the patient's email. Use 'book_appointment' tool ONLY when you have all of these.
+If you only know the doctor's name, you MUST use the 'find_doctor_by_name' tool to find their ID before booking. NEVER hallucinate or guess a doctor's ID.
 If you are missing the date or the time, you MUST ask the user for them (e.g. "What date and time would you prefer?").
 If you don't know the doctor's ID, ask the user to clarify.
 Do NOT call the tool if you are missing the time.
