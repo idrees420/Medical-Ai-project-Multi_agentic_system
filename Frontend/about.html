@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About AI Healthcare Assistant">
+    <title>About Us - AI Healthcare Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+        .page-content h2 {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+        .page-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .team-member {
+            background: rgba(14, 165, 233, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="top-navbar">
+        <a href="index.html" class="nav-brand">AI HealthCare</a>
+        <div class="nav-links">
+            <a href="index.html">Diagnosis</a>
+            <a href="index.html">My Appointments</a>
+            <a href="services.html">Services</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button id="nav-logout" class="nav-logout-btn">Logout</button>
+    </nav>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>About Our Platform</h1>
+            <p>Empowering patients and doctors with state-of-the-art Artificial Intelligence.</p>
+        </header>
+
+        <section class="page-content fade-in">
+            <h2>Our Mission</h2>
+            <p>At AI HealthCare, we believe that access to accurate, preliminary medical insights should be instant and reliable. Our mission is to bridge the gap between patients and specialized healthcare professionals using the power of advanced Artificial Intelligence.</p>
+            
+            <p>We leverage cutting-edge machine learning models trained on vast medical datasets to analyze your symptoms in real-time. Whether you are dealing with a minor ailment or need a professional consultation, our platform guides you to the right care at the right time.</p>
+
+            <h2>Why Choose Us?</h2>
+            <p><strong>Accuracy:</strong> Our models provide highly accurate preliminary diagnoses based on your exact symptom descriptions.</p>
+            <p><strong>Speed:</strong> Get insights within seconds, and book an appointment with a top-rated specialist immediately.</p>
+            <p><strong>Privacy:</strong> We adhere to the highest standards of medical data privacy and security. Your health information is always encrypted and secure.</p>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('nav-logout').addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'auth.html';
+        });
+        
+        if (!localStorage.getItem('userEmail')) {
+            window.location.href = 'auth.html';
+        }
+    </script>
+</body>
+</html>

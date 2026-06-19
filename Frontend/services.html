@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Healthcare Services">
+    <title>Services - AI Healthcare Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: rgba(14, 165, 233, 0.03);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.1);
+            border-color: var(--accent-primary);
+        }
+        .service-card h3 {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="top-navbar">
+        <a href="index.html" class="nav-brand">AI HealthCare</a>
+        <div class="nav-links">
+            <a href="index.html">Diagnosis</a>
+            <a href="index.html">My Appointments</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button id="nav-logout" class="nav-logout-btn">Logout</button>
+    </nav>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>Our Services</h1>
+            <p>Comprehensive health solutions powered by intelligent algorithms.</p>
+        </header>
+
+        <section class="page-content fade-in">
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>AI-Powered Diagnosis</h3>
+                    <p>Describe your symptoms in natural language, and our advanced AI model will analyze them instantly to predict potential health conditions with high accuracy.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Specialist Booking</h3>
+                    <p>Based on your predicted diagnosis, we match you with the most relevant, highly qualified medical specialists available in our network for an immediate consultation.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Health Dashboard</h3>
+                    <p>Manage all your upcoming and past appointments, view doctor recommendations, and keep track of your health records in one secure, unified dashboard.</p>
+                </div>
+                <div class="service-card">
+                    <h3>24/7 Availability</h3>
+                    <p>Our platform never sleeps. Get preliminary medical insights at any time of day or night, ensuring you're never left wondering about your health.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('nav-logout').addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'auth.html';
+        });
+        
+        if (!localStorage.getItem('userEmail')) {
+            window.location.href = 'auth.html';
+        }
+    </script>
+</body>
+</html>
